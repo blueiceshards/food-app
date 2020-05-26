@@ -1,0 +1,62 @@
+For react navigation: 
+
+https://reactnavigation.org/docs/getting-started/
+
+npm install --save react-navigation
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+expo install -> safer to ensure compatibility with expo (compared to npm install)
+
+DON'T SKIP THIS LECTURE - PLEASE READ TO BOTTOM!
+
+---
+
+If you're using React Navigation v4 or higher, everything works as shown in this module but there is one important difference: You need to install the different navigators which we'll use in this module (StackNavigator, DrawerNavigator, TabsNavigator) separately.
+
+So when we use the StackNavigator (= next lecture), run
+
+npm install --save react-navigation-stack
+before you start using it (with v3 and lower, it was part of react-navigation itself).
+
+Also add this import in the file where you are using createStackNavigator:
+
+import { createStackNavigator } from 'react-navigation-stack';
+Same for TabsNavigator (used a little bit later in this module):
+
+npm install --save react-navigation-tabs
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+And also for DrawerNavigator (also used later in this module):
+
+npm install --save react-navigation-drawer
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
+npm install --save react-navigation-header-buttons
+
+npm install --save react-navigation-material-bottom-tabs
+
+npm install --save react-native-paper
+
+https://reactnavigation.org/docs/drawer-navigator/
+
+REDUX - helps for behind the scenes state management so you don't have to forward props 10000x times to 10000 pages. 
+
+npm install --save redux react-redux
+
+Debugging Redux in React Native Apps
+You can debug Redux in React Native apps with help of the React Native Debugger tool: https://github.com/jhen0409/react-native-debugger/blob/master/docs/redux-devtools-integration.md
+
+1) Make sure you got the React Native Debugger installed (https://github.com/jhen0409/react-native-debugger)
+
+2) Enable JS Debugging in the running app (open development overlay via CTRL + M / CMD + M on Android devices, CMD + D on iOS devices)
+
+3) Install the redux-devtools-extension package via npm install --save-dev redux-devtools-extension (https://www.npmjs.com/package/redux-devtools-extension)
+
+4) Enable Redux debugging in your code:
+
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+ 
+const store = createStore(reducer, composeWithDevTools());
+Important: Make sure you remove this code when building your app for production!
+
+You'll see this approach in action in the Shop App course module ("Adding Items to the Cart" lecture)!
